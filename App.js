@@ -13,6 +13,7 @@ import {
   Platform,
 } from 'react-native';
 import TodoInsert from './components/TodoInsert';
+import TodoList from './components/TodoList';
 
 const App: () => Node = () => {
   return (
@@ -20,9 +21,7 @@ const App: () => Node = () => {
       <Text style={styles.appTitle}>SOO TODO</Text>
       <View style={styles.card}>
         <TodoInsert />
-        <ScrollView>
-          <Text>TodoList</Text>
-        </ScrollView>
+        <TodoList />
       </View>
     </SafeAreaView>
   );
