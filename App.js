@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {useState} from 'react';
 import type {Node} from 'react';
 import {
   SafeAreaView,
@@ -32,23 +32,9 @@ import {
 const {height, width} = Dimensions.get('window');
 
 const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
-        <View style={styles.container}>
-          <StatusBar barStyle="light-content" />
-          <Text style={styles.title}>Soo Todo</Text>
-          <View style={styles.card}>
-            <TextInput style={styles.input} placeholder={'New To Do'} />
-          </View>
-        </View>
-      </ScrollView>
+      <Text style={styles.appTitle}>SOO TODO</Text>
     </SafeAreaView>
   );
 };
@@ -57,37 +43,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F23657',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
-  title: {
+  appTitle: {
     color: 'white',
     fontSize: 30,
-    marginTop: 50,
-    fontWeight: '200',
+    marginTop: 30,
     marginBottom: 30,
-  },
-  card: {
-    backgroundColor: 'white',
-    flex: 1,
-    width: width - 25,
-    height: height - 25,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-    ...Platform.select({
-      ios: {
-        shadowColor: 'rgb(50,50,50)',
-        shadowOpacity: 0.5,
-        shadowRadius: 5,
-        shadowOffset: {
-          height: -1,
-          width: 0,
-        },
-      },
-      android: {
-        elevation: 3,
-      },
-    }),
+    fontWeight: '300',
+    textAlign: 'center',
+    backgroundColor: '#F23657',
   },
 });
 
