@@ -15,13 +15,37 @@ import {
 import TodoInsert from './components/TodoInsert';
 import TodoList from './components/TodoList';
 
+/*
+  todos: {id: Number, textValue: string, checked: boolean}
+  id : 각 목록의 고유 아이디
+  textValue : 목록 내용
+  checked : 완료 여부, (true이면 완료 false 이면 미완료)
+*/
 const App: () => Node = () => {
+  const [todos, setTodos] = useState([]);
+
+  /* 
+    addTodo : 할일을 추가하는 함수
+    addTodo함수는 사용자가 입력한 텍스트를 인자로 받아 새로운 todo 객체를 생성합니다. id는 랜덤으로 생성되도록 하였고, 완료 여부를 나타내는 checked 속성은 false를 기본값으로 주었습니다.
+    사용자가 입력한 텍스트는 textValue 속성을 들어갑니다.
+    기존 할 일 목록은 현재 상태를 나타내는 todos를 이용해서 그대로 가져옵니다.
+    따라서 setTodos 함수를 통해 이전에 있던 목록은 그대로 유지하면서 새로운 목록을 추가한 배열을 생성합니다.
+  */
+  const addTodo = text => {
+    setTodos([
+      ...todos,
+      {id: Math.random().toString(), textValue: text, checked: false},
+    ]);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.appTitle}>SOO TODO</Text>
       <View style={styles.card}>
-        <TodoInsert />
-        <TodoList />
+        {/* 속성값(props)을 이용하면 컴포넌트 간 데이터를 전달 할 수 있습니다. 컴포넌트 속성을 통해 방금 만든 addTodo 함수를 TodoInsert 컴포넌트로 전달한다. */}
+        <TodoInsert onAddTodo={addTodo} />
+        {/* todos를 TodoList 컴포넌트에 전달합니다. */}
+        <TodoList todos={todos} />
       </View>
     </SafeAreaView>
   );

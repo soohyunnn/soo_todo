@@ -9,14 +9,12 @@ import Icon from 'react-native-vector-icons/AntDesign';
 
 Icon.loadFont();
 
-/*
-  todos: {id: Number, textValue: string, checked: boolean}
-  id : 각 목록의 고유 아이디
-  textValue : 목록 내용
-  checked : 완료 여부, (true이면 완료 false 이면 미완료)
-*/
-const TodoListItem = () => {
-  const [todos, setTodos] = useState([]);
+//각의 아이템에는 textValue, id, checked라는 key와 그에 해당하는 value가 담겨 있습니다.
+//아래와 같이 TodoListItem 컴포넌트에서 TodoList컴포넌트에서 전달한 값들을 받을 수 있습니다.
+//<Text>컴포넌트에 textValue 값을 넣어줍니다.
+const TodoListItem = ({textValue, id, checked}) => {
+  console.log('TodoListItem - id::', id);
+  console.log('TodoListItem - textValue::', textValue);
   return (
     <View style={styles.container}>
       <TouchableOpacity>
@@ -24,9 +22,7 @@ const TodoListItem = () => {
           <Icon name="circledowno" size={30} color="#F23657" />
         </View>
       </TouchableOpacity>
-      <Text style={[styles.text, styles.strikeText]}>
-        Items will be shown here
-      </Text>
+      <Text style={[styles.text, styles.strikeText]}>{textValue}</Text>
       <Text style={styles.buttonContainer}>
         <Icon name="delete" size={30} color="#F23657" />
       </Text>
