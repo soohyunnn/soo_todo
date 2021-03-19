@@ -1,11 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React, {useState} from 'react';
 import type {Node} from 'react';
 import {
@@ -21,22 +13,15 @@ import {
   Platform,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const {height, width} = Dimensions.get('window');
-
 const App: () => Node = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.appTitle}>SOO TODO</Text>
       <View style={styles.card}>
         <TextInput style={styles.input} placeholder="New ToDo" />
+        <ScrollView>
+          <Text>TodoList</Text>
+        </ScrollView>
       </View>
     </SafeAreaView>
   );
