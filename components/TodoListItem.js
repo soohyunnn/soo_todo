@@ -12,9 +12,7 @@ Icon.loadFont();
 //각의 아이템에는 textValue, id, checked라는 key와 그에 해당하는 value가 담겨 있습니다.
 //아래와 같이 TodoListItem 컴포넌트에서 TodoList컴포넌트에서 전달한 값들을 받을 수 있습니다.
 //<Text>컴포넌트에 textValue 값을 넣어줍니다.
-const TodoListItem = ({textValue, id, checked}) => {
-  console.log('TodoListItem - id::', id);
-  console.log('TodoListItem - textValue::', textValue);
+const TodoListItem = ({textValue, id, checked, onRemove}) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity>
@@ -23,9 +21,11 @@ const TodoListItem = ({textValue, id, checked}) => {
         </View>
       </TouchableOpacity>
       <Text style={[styles.text, styles.strikeText]}>{textValue}</Text>
-      <Text style={styles.buttonContainer}>
-        <Icon name="delete" size={30} color="#F23657" />
-      </Text>
+      <TouchableOpacity style={styles.buttonContainer}>
+        <Text style={styles.buttonText} onPress={onRemove(id)}>
+          <Icon name="delete" size={30} color="#F23657" />
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -69,6 +69,9 @@ const styles = StyleSheet.create({
   buttonContainer: {
     marginVertical: 10,
     marginHorizontal: 10,
+  },
+  buttonText: {
+    color: '#fff',
   },
 });
 

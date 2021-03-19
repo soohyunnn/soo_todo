@@ -38,14 +38,19 @@ const App: () => Node = () => {
     ]);
   };
 
+  //onRemove 함수에서도 setTodos를 사용하여 상태를 업데이트 해줍니다. 각 아이템의 고유 id를 받아와서 해당 아이디를 가진 아이템 객체만 제외하고 새로운 배열을 만드는 함수입니다.
+  const onRemove = id => e => {
+    setTodos(todos.filter(todo => todo.id != id));
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.appTitle}>SOO TODO</Text>
       <View style={styles.card}>
         {/* 속성값(props)을 이용하면 컴포넌트 간 데이터를 전달 할 수 있습니다. 컴포넌트 속성을 통해 방금 만든 addTodo 함수를 TodoInsert 컴포넌트로 전달한다. */}
         <TodoInsert onAddTodo={addTodo} />
-        {/* todos를 TodoList 컴포넌트에 전달합니다. */}
-        <TodoList todos={todos} />
+        {/* todos를 TodoList 컴포넌트에 전달합니다. , onRemove함수를 TodoList컴포넌트에 전달합니다.*/}
+        <TodoList todos={todos} onRemove={onRemove} />
       </View>
     </SafeAreaView>
   );
