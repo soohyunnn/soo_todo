@@ -35,6 +35,9 @@ const App: () => Node = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.appTitle}>SOO TODO</Text>
+      <View style={styles.card}>
+        <TextInput style={styles.input} placeholder="New ToDo" />
+      </View>
     </SafeAreaView>
   );
 };
@@ -52,6 +55,21 @@ const styles = StyleSheet.create({
     fontWeight: '300',
     textAlign: 'center',
     backgroundColor: '#F23657',
+  },
+  card: {
+    backgroundColor: '#fff',
+    flex: 1,
+    borderTopLeftRadius: 10, //to provide rounded corners
+    borderTopRightRadius: 10, //to provide rounded corners
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  input: {
+    padding: 20,
+    borderBottomColor: '#bbb',
+    borderBottomWidth: 1,
+    fontSize: 24,
+    marginLeft: 20,
   },
 });
 
