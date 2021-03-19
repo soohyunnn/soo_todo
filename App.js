@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F23657',
+    //flexDirection: 'column-reverse', //reㅍ
   },
   appTitle: {
     color: 'white',
@@ -49,6 +50,14 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
   },
+  // card1: {
+  //   backgroundColor: 'yellow',
+  //   flex: 3,
+  //   borderTopLeftRadius: 10, //to provide rounded corners
+  //   borderTopRightRadius: 10, //to provide rounded corners
+  //   marginLeft: 10,
+  //   marginRight: 10,
+  // },
   input: {
     padding: 20,
     borderBottomColor: '#bbb',
